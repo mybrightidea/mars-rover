@@ -1,0 +1,58 @@
+.box-layout {
+  align-items: center;
+  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/2300675/background-card.jpg"),
+    url("/images/background-card.jpg");
+  background-size: cover;
+
+  @include display-flexbox;
+  @include justify-content(center);
+
+  height: 100vh;
+  width: 100vw;
+}
+
+.box-layout__box {
+  @include display-flexbox;
+  @include flex-direction(column);
+
+  background: fade-out(white, 0.15);
+  border-radius: 5px;
+  padding: $l-size $m-size;
+  text-align: center;
+
+  min-width: 40rem;
+  min-height: 70rem;
+}
+
+.box-layout__content {
+  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/2300675/background-graph-paper.jpg"),
+    url("/images/background-graph-paper.jpg");
+  background-size: cover;
+  @include prefix(flex, 2, ms webkit spec);
+  // flex-grow: 2;
+  position: relative;
+}
+.box-layout__content--table {
+  // display: inline-block;
+  position: absolute;
+  top: 50%;
+  width: 100%;
+
+  @include transform(translateY(-50%));
+  table {
+    margin: 0 auto;
+  }
+}
+
+.box-layout__title-box {
+  background: fade-out(white, 0.15);
+  padding-bottom: $m-size;
+}
+.box-layout__title {
+  margin: 0 0 $m-size 0;
+  line-height: 1;
+}
+
+.box-layout__footer {
+  @include display-flexbox;
+}

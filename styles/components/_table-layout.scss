@@ -1,0 +1,31 @@
+table {
+  border: solid 0.5px black;
+}
+
+td {
+  border: dashed 0.5px $light-grey;
+  @include transition(all 0.2s);
+  height: 4rem;
+  width: 4rem;
+  text-align: center;
+  vertical-align: middle;
+}
+
+td.not--visited {
+  background-color: $mars-red-light;
+}
+
+td.not--visited:hover {
+  background-color: $light-grey;
+}
+
+td.visited {
+  background-color: $mars-red-dark;
+  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/2300675/foot-print.png"), url("/images/foot-print.png");
+}
+
+td.visited--hover {
+  background-color: $light-grey;
+  @include prefix(transform, scale(1.1), ms webkit spec);
+  cursor: pointer;
+}
