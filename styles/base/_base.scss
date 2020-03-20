@@ -5,6 +5,9 @@
 // css easier because you nkow 1.6rem = 16px BUT get all the benefits from usign rem (root em) units throughout
 html {
   box-sizing: border-box;
+  border-width: 0;
+  border-style: none;
+  border-color: transparent;
   font-size: 62.5%;
 }
 *,
@@ -16,11 +19,24 @@ body {
   color: $dark-grey;
   font-family: "PT Sans", Helvetica, Arial, sans-serif;
   font-size: $m-size;
-  line-height: 1.6;
+  line-height: 1.6rem;
+  font-size: 1.6rem;
+  margin: 0;
+  padding: 0;
 }
-
 h1,
 h2 {
   font-family: "PT Sans Narrow", Helvetica, Arial, sans-serif;
   font-weight: bold;
+}
+h1 {
+  font-size: 2.2rem;
+}
+
+h2 {
+  font-size: 1.8rem;
+}
+
+h3 {
+  font-size: 1.6rem;
 }

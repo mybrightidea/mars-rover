@@ -1,5 +1,6 @@
 const should = require("should");
 jRover = require("../rover");
+jRoverTest = require("./test-data");
 
 beforeEach(() => {});
 
@@ -164,234 +165,29 @@ describe("Test with supplied data", () => {
   });
 });
 
-const testData = [
-  [[5, 5], [1, 2, "N"], "LMLMLMLMM", [3, 3, "E"], "MMRMMRMRRM"],
-  //1
-  [],
-  //2
-  [[5, 5]],
-  //3
-  [[5, 5], [1, 2, "N"], "LMLMLMLMM"],
-  //4
-  [[5, 5], [1, 2, "N"], "L"],
-  //5
-  [[5, 5], [1, 2, "W"], "M"],
-  //6
-  [[5, 5], [1, 2, "W"], "RLRLLRLLRLLRLRLLR"],
-  //7
-  [[5, 5], [1, 2, "W"], "MMMMMMMM"],
-  //8
-  [[5, 5], [1, 2, "W"], "RMMR"],
-  //9
-  [[5, 5], [1, 2, "W"], "MRRM"],
-  //10
-  [[5, 5], [1, 2, "W"], "RMMR"],
-  //11
-  [[5, 5], [1, 2, "W"], "MRRM"],
-  //12
-  [[5, 5], [1, 2, "W"], "RRRR"],
-  //13
-  [[5, 5], [1, 2, "W"], "LLLLLLLLLM"],
-  //14
-  [[5, 5], [1, 2, "W"], "MLLLLLLLLL"],
-  //15
-  [[5, 5], [1, 2, "W"], ""],
-  //16
-  [
-    [5, 5],
-    [1, 2, "N"],
-    "MMLRMMMMMMRMRMRLLRMMMLLMMLRMMLMLRRLMMRLMRRMRMLRRLMRMLMLLRRMRRMLRRLMRLLRMMMLRLRLRMRRRMMMMLRLMLMRMRMLMRMLMMRLLMMMRRLLMMRRRRRRLRMLMLRLMMMMRRLMRMRRLRLMLRLLMMMLRRRLLRMLRLLMMLMRRMLLMLLRRLLMLLLLMMLMLLLMRLRMRMRMRLLLLRRLLMRLLLLLLL"
-  ],
-  //16
-  [
-    [5, 5],
-    [1, 2, "N"],
-    "MMLLMMRLLLLMMLRMLMRLRLMMLMMRMLRLMMRMLMRMMLMRRRMMRMMRLRRMRLLLLMMLRMRRMRMRMRRLMRLLLMRMRLMMRMLLRLMRLRMLRMMLMMRRMRLRRMLLLRRMMRRMRLLMMLLRLRRMMMLLLMRMMLRLMMLMMMLMMMRRRMMLLLRMLMMLLRMRRLMRRRLRMMLMMMLMLLRRLRLLMLMLLRLRLRRLMMLMRMMLL"
-  ]
-];
-
-const testResults = [
-  {},
-  //1
-  undefined,
-  //2
-  { maxX: 5, maxY: 5, roverEndStates: [] },
-  //3
-  { maxX: 5, maxY: 5, roverEndStates: [{ x: 1, y: 3, orientation: "N" }] },
-  //4
-  { maxX: 5, maxY: 5, roverEndStates: [{ x: 1, y: 2, orientation: "W" }] },
-  //5
-  { maxX: 5, maxY: 5, roverEndStates: [{ x: 0, y: 2, orientation: "W" }] },
-  //6
-  { maxX: 5, maxY: 5, roverEndStates: [{ x: 1, y: 2, orientation: "N" }] },
-  //7
-  { maxX: 5, maxY: 5, roverEndStates: [{ x: -7, y: 2, orientation: "W" }] },
-  //8
-  { maxX: 5, maxY: 5, roverEndStates: [{ x: 1, y: 4, orientation: "E" }] },
-  //9
-  { maxX: 5, maxY: 5, roverEndStates: [{ x: 1, y: 2, orientation: "E" }] },
-  //10
-  { maxX: 5, maxY: 5, roverEndStates: [{ x: 1, y: 4, orientation: "E" }] },
-  //11
-  { maxX: 5, maxY: 5, roverEndStates: [{ x: 1, y: 2, orientation: "E" }] },
-  //12
-  { maxX: 5, maxY: 5, roverEndStates: [{ x: 1, y: 2, orientation: "W" }] },
-  //13
-  { maxX: 5, maxY: 5, roverEndStates: [{ x: 1, y: 1, orientation: "S" }] },
-  //14
-  { maxX: 5, maxY: 5, roverEndStates: [{ x: 0, y: 2, orientation: "S" }] },
-  //15
-  { maxX: 5, maxY: 5, roverEndStates: [{ x: 1, y: 2, orientation: "W" }] },
-  //16
-  { maxX: 5, maxY: 5, roverEndStates: [{ x: 2, y: 0, orientation: "N" }] },
-  //17
-  { maxX: 5, maxY: 5, roverEndStates: [{ x: -4, y: 5, orientation: "E" }] }
-];
 describe("Test with own data", () => {
   //1. should not crash with empty data
   it("should not crash with empty data", () => {
-    const result = jRover.solveProblem(testData[1]);
+    const result = jRover.solveProblem([]);
     should.not.exist(result);
   });
-  //2. should not crash with only limits no rover data
-  it("should not crash with only limits no rover data", () => {
-    const { maxX, maxY, roverEndStates } = jRover.solveProblem(testData[2]);
-    maxX.should.equal(testResults[2].maxX);
-    maxY.should.equal(testResults[2].maxY);
-    roverEndStates.should.be.instanceof(Array).and.have.lengthOf(0);
-  });
-  //3. should return rover position with 1 rover
-  it("should return rover position with 1 rover", () => {
-    const { maxX, maxY, roverEndStates } = jRover.solveProblem(testData[3]);
-    const { x, y, orientation } = roverEndStates[0];
-    x.should.equal(testResults[3].roverEndStates[0].x);
-    y.should.equal(testResults[3].roverEndStates[0].y);
-    orientation.should.equal(testResults[3].roverEndStates[0].orientation);
-  });
-  //4. should return correct position with 1 instruction which is rotation
-  it("should return correct position with 1 instruction which is rotation", () => {
-    const run = 4;
-    const { maxX, maxY, roverEndStates } = jRover.solveProblem(testData[run]);
-    const { x, y, orientation } = roverEndStates[0];
-    x.should.equal(testResults[run].roverEndStates[0].x);
-    y.should.equal(testResults[run].roverEndStates[0].y);
-    orientation.should.equal(testResults[run].roverEndStates[0].orientation);
-  });
-  //5. should return correct position with 1 instruction which is translation
-  it("should return correct position with 1 instruction which is translation", () => {
-    const run = 5;
-    const { maxX, maxY, roverEndStates } = jRover.solveProblem(testData[run]);
-    const { x, y, orientation } = roverEndStates[0];
-    x.should.equal(testResults[run].roverEndStates[0].x);
-    y.should.equal(testResults[run].roverEndStates[0].y);
-    orientation.should.equal(testResults[run].roverEndStates[0].orientation);
-  });
-  //6. should return correct position with only 1 type of instruction - rotation
-  it("should return correct position with only 1 type of instruction - rotation", () => {
-    const run = 6;
-    const { maxX, maxY, roverEndStates } = jRover.solveProblem(testData[run]);
-    const { x, y, orientation } = roverEndStates[0];
-    x.should.equal(testResults[run].roverEndStates[0].x);
-    y.should.equal(testResults[run].roverEndStates[0].y);
-    orientation.should.equal(testResults[run].roverEndStates[0].orientation);
-  });
-  //7. should return correct position with only 1 type of instruction - translation
-  it("should return correct position with only 1 type of instruction - translation", () => {
-    const run = 7;
-    const { maxX, maxY, roverEndStates } = jRover.solveProblem(testData[run]);
-    const { x, y, orientation } = roverEndStates[0];
-    x.should.equal(testResults[run].roverEndStates[0].x);
-    y.should.equal(testResults[run].roverEndStates[0].y);
-    orientation.should.equal(testResults[run].roverEndStates[0].orientation);
-  });
-  //8. should return correct position start on rotation
-  it("should return correct position start on rotation", () => {
-    const run = 8;
-    const { maxX, maxY, roverEndStates } = jRover.solveProblem(testData[run]);
-    const { x, y, orientation } = roverEndStates[0];
-    x.should.equal(testResults[run].roverEndStates[0].x);
-    y.should.equal(testResults[run].roverEndStates[0].y);
-    orientation.should.equal(testResults[run].roverEndStates[0].orientation);
-  });
-  //9. should return correct position start on TRANSLATION
-  it("should return correct position start on TRANSLATION", () => {
-    const run = 9;
-    const { maxX, maxY, roverEndStates } = jRover.solveProblem(testData[run]);
-    const { x, y, orientation } = roverEndStates[0];
-    x.should.equal(testResults[run].roverEndStates[0].x);
-    y.should.equal(testResults[run].roverEndStates[0].y);
-    orientation.should.equal(testResults[run].roverEndStates[0].orientation);
-  });
-  //10. should return correct position END on rotation
-  it("should return correct position END on rotation", () => {
-    const run = 10;
-    const { maxX, maxY, roverEndStates } = jRover.solveProblem(testData[run]);
-    const { x, y, orientation } = roverEndStates[0];
-    x.should.equal(testResults[run].roverEndStates[0].x);
-    y.should.equal(testResults[run].roverEndStates[0].y);
-    orientation.should.equal(testResults[run].roverEndStates[0].orientation);
-  });
-  //11. should return correct position END on TRANSLATION
-  it("should return correct position END on TRANSLATION", () => {
-    const run = 11;
-    const { maxX, maxY, roverEndStates } = jRover.solveProblem(testData[run]);
-    const { x, y, orientation } = roverEndStates[0];
-    x.should.equal(testResults[run].roverEndStates[0].x);
-    y.should.equal(testResults[run].roverEndStates[0].y);
-    orientation.should.equal(testResults[run].roverEndStates[0].orientation);
-  });
-  //12. start non north with 4 rotations, no translation
-  it("should return correct position start non north with 4 rotations, no translation", () => {
-    const run = 12;
-    const { maxX, maxY, roverEndStates } = jRover.solveProblem(testData[run]);
-    const { x, y, orientation } = roverEndStates[0];
-    x.should.equal(testResults[run].roverEndStates[0].x);
-    y.should.equal(testResults[run].roverEndStates[0].y);
-    orientation.should.equal(testResults[run].roverEndStates[0].orientation);
-  });
-  //13.Should return correct position when start with mulitple rotations
-  it("Should return correct position when start with mulitple rotations", () => {
-    const run = 13;
-    const { maxX, maxY, roverEndStates } = jRover.solveProblem(testData[run]);
-    const { x, y, orientation } = roverEndStates[0];
-    x.should.equal(testResults[run].roverEndStates[0].x);
-    y.should.equal(testResults[run].roverEndStates[0].y);
-    orientation.should.equal(testResults[run].roverEndStates[0].orientation);
-  });
-  //14.Should return correct position when end with mulitple rotations
-  it("Should return correct position when end with mulitple rotations", () => {
-    const run = 14;
-    const { maxX, maxY, roverEndStates } = jRover.solveProblem(testData[run]);
-    const { x, y, orientation } = roverEndStates[0];
-    x.should.equal(testResults[run].roverEndStates[0].x);
-    y.should.equal(testResults[run].roverEndStates[0].y);
-    orientation.should.equal(testResults[run].roverEndStates[0].orientation);
-  });
-  //15.Should return correct position when no instructions sent
-  it("Should return correct position when no instructions sent", () => {
-    const run = 15;
-    const { maxX, maxY, roverEndStates } = jRover.solveProblem(testData[run]);
-    const { x, y, orientation } = roverEndStates[0];
-    x.should.equal(testResults[run].roverEndStates[0].x);
-    y.should.equal(testResults[run].roverEndStates[0].y);
-    orientation.should.equal(testResults[run].roverEndStates[0].orientation);
-  });
-  //16.Should return correct position when large data set of instructions set #1
-  it("Should return correct position when large data set of instructions set #1", () => {
-    const run = 16;
-    const { maxX, maxY, roverEndStates } = jRover.solveProblem(testData[run]);
-    const { x, y, orientation } = roverEndStates[0];
-    x.should.equal(testResults[run].roverEndStates[0].x);
-    y.should.equal(testResults[run].roverEndStates[0].y);
-    orientation.should.equal(testResults[run].roverEndStates[0].orientation);
-  });
-  //17.Should return correct position when large data set of instructions set #2
-  it("Should return correct position when large data set of instructions set #2", () => {
-    const run = 17;
-    const { maxX, maxY, roverEndStates } = jRover.solveProblem(testData[run]);
-    const { x, y, orientation } = roverEndStates[0];
-    x.should.equal(testResults[run].roverEndStates[0].x);
-    y.should.equal(testResults[run].roverEndStates[0].y);
-    orientation.should.equal(testResults[run].roverEndStates[0].orientation);
+
+  // execute tests in file
+  jRoverTest.data.forEach((data, index) => {
+    it(jRoverTest.titles[index], () => {
+      const { maxX, maxY, roverEndStates } = jRover.solveProblem(data);
+
+      maxX.should.equal(jRoverTest.results[index].maxX);
+      maxY.should.equal(jRoverTest.results[index].maxY);
+
+      jRoverTest.results[index].roverEndStates.forEach(
+        (expectedEndState, esIndex) => {
+          const { x, y, orientation } = roverEndStates[esIndex];
+          x.should.equal(expectedEndState.x);
+          y.should.equal(expectedEndState.y);
+          orientation.should.equal(expectedEndState.orientation);
+        }
+      );
+    });
   });
 });

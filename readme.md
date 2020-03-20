@@ -122,7 +122,7 @@ Test cases all exist in `test/rover.test.js`
 
 Non-trivial business case tests are:
 
-These tests are in the mocha test file but also implemented in the index.html file supplied so they can be viewed easily here on codepen without having to npm install the app and run mocha
+These tests are in the mocha test file but also implemented in the index.html file supplied so they can be viewed easily [here on codepen](https://codepen.io/johnalupton/pen/oNXMMGM) without having to npm install the app and run mocha
 
 Test with own data
 

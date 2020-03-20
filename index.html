@@ -15,16 +15,14 @@
     />
     <link rel="stylesheet" type="text/css" href="styles.css" />
     <script type="text/javascript" src="rover.js"></script>
-    <script type="text/javascript" src="script-copy.js"></script>
+    <script
+      type="text/javascript"
+      src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/2300675/test-data.js"
+    ></script>
+    <script type="text/javascript" src="script.js"></script>
   </head>
 
   <body>
-    <div id="input"></div>
-    <div id="result"></div>
+    <div id="output" class="box-layout"></div>
   </body>
 </html>
-
-<script>
-  const result = jRover.MMult(jRover.identity, jRover.rotateL);
-  console.log(result);
-</script>

@@ -22,6 +22,9 @@
 @import url("https://fonts.googleapis.com/css?family=PT+Sans|PT+Sans+Narrow:400,700&display=swap");
 html {
   box-sizing: border-box;
+  border-width: 0;
+  border-style: none;
+  border-color: transparent;
   font-size: 62.5%; }
 
 *,
@@ -33,12 +36,24 @@ body {
   color: #333;
   font-family: "PT Sans", Helvetica, Arial, sans-serif;
   font-size: 1.6rem;
-  line-height: 1.6; }
+  line-height: 1.6rem;
+  font-size: 1.6rem;
+  margin: 0;
+  padding: 0; }
 
 h1,
 h2 {
   font-family: "PT Sans Narrow", Helvetica, Arial, sans-serif;
   font-weight: bold; }
+
+h1 {
+  font-size: 2.2rem; }
+
+h2 {
+  font-size: 1.8rem; }
+
+h3 {
+  font-size: 1.6rem; }
 
 .box-layout {
   align-items: center;
@@ -50,10 +65,12 @@ h2 {
   -webkit-justify-content: center;
   -ms-justify-content: center;
   justify-content: center;
-  height: 100vh;
-  width: 100vw; }
+  -webkit-flex-direction: column;
+  -moz-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column; }
 
-.box-layout__box {
+.test-case {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
@@ -62,102 +79,19 @@ h2 {
   -ms-flex-direction: column;
   flex-direction: column;
   background: rgba(255, 255, 255, 0.85);
-  border-radius: 5px;
   padding: 3.2rem 1.6rem;
-  text-align: center;
-  min-width: 40rem;
-  min-height: 70rem; }
+  text-align: left;
+  width: 60rem;
+  border-bottom: #888 1px solid; }
 
-.box-layout__content {
-  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/2300675/background-graph-paper.jpg"), url("/images/background-graph-paper.jpg");
-  background-size: cover;
-  -ms-flex: 2;
-  -webkit-flex: 2;
-  flex: 2;
-  position: relative; }
-
-.box-layout__content--table {
-  position: absolute;
-  top: 50%;
-  width: 100%;
-  -ms-transform: translateY(-50%);
-  -webkit-transform: translateY(-50%);
-  transform: translateY(-50%); }
-  .box-layout__content--table table {
-    margin: 0 auto; }
-
-.box-layout__title-box {
-  background: rgba(255, 255, 255, 0.85);
-  padding-bottom: 1.6rem; }
-
-.box-layout__title {
-  margin: 0 0 1.6rem 0;
+.test-title,
+.test-sub-title,
+.test-result-title {
+  margin: 0 0 1.2rem 0;
   line-height: 1; }
 
-.box-layout__footer {
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex; }
-
-table {
-  border: solid 0.5px black; }
-
-td {
-  border: dashed 0.5px #888;
-  -ms-transition: all 0.2s;
-  -webkit-transition: all 0.2s;
-  transition: all 0.2s;
-  height: 4rem;
-  width: 4rem;
-  text-align: center;
-  vertical-align: middle; }
-
-td.not--visited {
-  background-color: darkorange; }
-
-td.not--visited:hover {
-  background-color: #888; }
-
-td.visited {
-  background-color: rgba(255, 140, 0, 0.623);
-  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/2300675/foot-print.png"), url("/images/foot-print.png"); }
-
-td.visited--hover {
-  background-color: #888;
-  -ms-transform: scale(1.1);
-  -webkit-transform: scale(1.1);
-  transform: scale(1.1);
-  cursor: pointer; }
-
-html {
-  box-sizing: border-box; }
-
-*,
-*:before,
-*:after {
-  box-sizing: inherit; }
-
-* {
-  box-sizing: border-box;
-  border-width: 0;
-  border-style: none;
-  border-color: transparent; }
-
-html {
-  font-size: 62.5%; }
-
-h1 {
-  font-size: 2.2rem; }
-
-h2 {
-  font-size: 1.8rem; }
-
-h3 {
-  font-size: 1.6rem; }
-
-body {
-  line-height: 1.6rem;
-  font-size: 1.6rem;
-  font-family: sans-serif;
-  margin: 0;
-  padding: 0; }
+.max-coords,
+.input-data {
+  margin: 0 0 1.2rem 0;
+  line-height: 1;
+  word-wrap: break-word; }
