@@ -1,0 +1,30 @@
+<html>
+  <head>
+    <title>Mars Rover</title>
+    <link
+      id="favicon"
+      rel="icon"
+      type="image/x-icon"
+      href="https://s3-us-west-2.amazonaws.com/s.cdpn.io/2300675/favicon.ico"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+    />
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <script type="text/javascript" src="rover.js"></script>
+    <script type="text/javascript" src="script-copy.js"></script>
+  </head>
+
+  <body>
+    <div id="input"></div>
+    <div id="result"></div>
+  </body>
+</html>
+
+<script>
+  const result = jRover.MMult(jRover.identity, jRover.rotateL);
+  console.log(result);
+</script>

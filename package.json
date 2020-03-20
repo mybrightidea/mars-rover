@@ -9,18 +9,14 @@
     "gulp": "^4.0.2",
     "gulp-sass": "^4.0.2"
   },
-  "devDependencies": {},
-  "scripts": {
-    "server": "dev-server"
+  "devDependencies": {
+    "mocha": "^7.1.1",
+    "should": "^13.2.3"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/johnalupton/squares.git"
+  "scripts": {
+    "server": "dev-server",
+    "test": "mocha"
   },
   "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/johnalupton/squares/issues"
-  },
-  "homepage": "https://github.com/johnalupton/squares#readme"
+  "license": "ISC"
 }

@@ -110,6 +110,55 @@ Process each instruction. At each iteration
 
   - Apply rotation to since-inception rotation accumulator
 
+## 5. Program notes
+
+Code is implemented as a module for node or windows: It reponds to its use pattern and creates either `window.jRover` global when included in an HTML document or exports `jRover` from the module ()used in node or test environment.
+
+All methods and properties exposed for testing: In a live release would only need to expose `runProblem` method
+
+Tests are specified using `mocha` with `should` assertion library
+
+Test cases all exist in `test/rover.test.js`
+
+Non-trivial business case tests are:
+
+These tests are in the mocha test file but also implemented in the index.html file supplied so they can be viewed easily here on codepen without having to npm install the app and run mocha
+
+Test with own data
+
+- Should not crash with empty data
+
+- Should not crash with only limits no rover data
+
+- Should return rover position with 1 rover
+
+- Should return correct position with 1 instruction which is rotation
+
+- Should return correct position with 1 instruction which is translation
+
+- Should return correct position with only 1 type of instruction - rotation
+
+- Should return correct position with only 1 type of instruction - translation
+
+- Should return correct position start on rotation
+
+- Should return correct position start on TRANSLATION
+
+- Should return correct position END on rotation
+
+- Should return correct position END on TRANSLATION
+
+- Should return correct position start non north with 4 rotations, no translation
+- Should return correct position when start with mulitple rotations
+- Should return correct position when end with mulitple rotations
+- Should return correct position when no instructions sent
+
+- Should return correct position when large data set of instructions set #1
+
+- Should return correct position when large data set of instructions set #2
+
+Have fun!
+
 :clown_face:
 
 John
