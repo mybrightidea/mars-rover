@@ -79,15 +79,15 @@
 
       for (let i = 1; i < input.length; i = i + 2) {
         const [x, y, orientation] = input[i];
-        const data = safeSplit(input[i + 1]);
+        const originalInstructions = safeSplit(input[i + 1]);
         roverData.push({
           x,
           y,
           orientation,
-          data,
-          adjustedData: safeSplit(
+          originalInstructions,
+          instructions: safeSplit(
             jRover.orientationToRotation(orientation)
-          ).concat(data)
+          ).concat(originalInstructions)
         });
       }
       return {
@@ -97,7 +97,7 @@
       };
     },
     runProblem: (roverData = []) => {
-      return roverData.map(({ x, y, adjustedData }) => {
+      return roverData.map(({ x, y, instructions }) => {
         let xEnd = x;
         let yEnd = y;
 
@@ -105,7 +105,7 @@
         let inceptionRotationAccumulator = 0;
         let MStep = jRover.north1;
 
-        adjustedData.forEach(instruction => {
+        instructions.forEach(instruction => {
           switch (instruction) {
             case "M":
               MStep = jRover.MMult(accRotation, MStep);

@@ -10,13 +10,15 @@ The rover has 2 states we wish to track
 
 - Orientation
 
-Since there is no condition that the instruction queue must end on an "M" instruction, we could have the situation where the last instruction is "R" or "L".
-
-We therefore have to track each property independently.
+Note: There is no condition that the instruction queue must end on an "M" instruction, we could have the situation where the last instruction is "R" or "L".
 
 ## 2. Final orientation algorithm
 
-To determine the final orientation we need to simply track the net orientation change e.g. if we accumulate rotations with, for example "R" as +1 (meaning that "L" would be -1 since the net of "R" and "L" instruction is no net rotation) and the net rotation from the start would be the accumulated value of the rotations. We can then deduce the final orientation as being the initial orientation adjusted by the net rotations. This is independant of any translations ("M" instructions)
+To determine the final orientation we need to simply track the net orientation change i.e. if we accumulate rotations the net rotation from the start would be the accumulated value of the rotations.
+
+For example "R" as +1 (meaning that "L" would be -1 since the net of "R" and "L" instruction is no net rotation)
+
+We can then deduce the final orientation as being the initial orientation adjusted by the net rotations. This is independant of any translations ("M" instructions)
 
 ## 3. Final position algorithm
 

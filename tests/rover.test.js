@@ -135,7 +135,7 @@ describe("Test with supplied data", () => {
     roverData[0].should.have.property("x").and.equal(input[1][0]);
     roverData[0].should.have.property("y").and.equal(input[1][1]);
     roverData[0].should.have
-      .property("data")
+      .property("originalInstructions")
       .and.containDeepOrdered(input[2].split(""));
   });
   it("Should return correct prepared input data for rover 2", () => {
@@ -143,7 +143,7 @@ describe("Test with supplied data", () => {
     roverData[1].should.have.property("x").and.equal(input[3][0]);
     roverData[1].should.have.property("y").and.equal(input[3][1]);
     roverData[1].should.have
-      .property("data")
+      .property("originalInstructions")
       .and.containDeepOrdered(input[4].split(""));
   });
 
