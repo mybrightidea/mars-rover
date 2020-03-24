@@ -17,7 +17,8 @@
       "Should return correct position when end with mulitple rotations",
       "Should return correct position when no instructions sent",
       "Should return correct position when large data set of instructions set #1",
-      "Should return correct position when large data set of instructions set #2"
+      "Should return correct position when large data set of instructions set #2",
+      "Should return correct max and min for X & Y when large data set of instructions"
     ],
     data: [
       [[5, 5], [1, 2, "N"], "LMLMLMLMM", [3, 3, "E"], "MMRMMRMRRM"],
@@ -54,11 +55,17 @@
         [1, 2, "N"],
         "MMLRMMMMMMRMRMRLLRMMMLLMMLRMMLMLRRLMMRLMRRMRMLRRLMRMLMLLRRMRRMLRRLMRLLRMMMLRLRLRMRRRMMMMLRLMLMRMRMLMRMLMMRLLMMMRRLLMMRRRRRRLRMLMLRLMMMMRRLMRMRRLRLMLRLLMMMLRRRLLRMLRLLMMLMRRMLLMLLRRLLMLLLLMMLMLLLMRLRMRMRMRLLLLRRLLMRLLLLLLL"
       ],
-      //16
+      //17
       [
         [5, 5],
         [1, 2, "N"],
         "MMLLMMRLLLLMMLRMLMRLRLMMLMMRMLRLMMRMLMRMMLMRRRMMRMMRLRRMRLLLLMMLRMRRMRMRMRRLMRLLLMRMRLMMRMLLRLMRLRMLRMMLMMRRMRLRRMLLLRRMMRRMRLLMMLLRLRRMMMLLLMRMMLRLMMLMMMLMMMRRRMMLLLRMLMMLLRMRRLMRRRLRMMLMMMLMLLRRLRLLMLMLLRLRLRRLMMLMRMMLL"
+      ],
+      //18
+      [
+        [5, 5],
+        [1, 2, "N"],
+        "MRRMLLLMMRRMRLRMLLRMLRLLLLRMMLMRRLMMMRMLLMMLMLLRRMRLRRRMLMMRLMMMLLLLLMLMMMMMLLLMRRLMRMMMLRLRRRLMRMRLRLMLLRRMRRMRRMRMMRLLLMRLMRRMMMMMMLRRRMMRMRRRLLLLRRLRLMMLMLMRRRMMRMRRLRMLRMRRLLLMRLMRRMMRLLLLLLLRLMMMMMLRMLLLRMMLMMRMLRRLR"
       ]
     ],
     results: [
@@ -101,7 +108,15 @@
       //16
       { maxX: 5, maxY: 5, roverEndStates: [{ x: 2, y: 0, orientation: "N" }] },
       //17
-      { maxX: 5, maxY: 5, roverEndStates: [{ x: -4, y: 5, orientation: "E" }] }
+      { maxX: 5, maxY: 5, roverEndStates: [{ x: -4, y: 5, orientation: "E" }] },
+      //18
+      {
+        maxX: 5,
+        maxY: 5,
+        roverEndStates: [
+          { x: 9, y: -4, maxX: 9, minX: -1, maxY: 3, minY: 8, orientation: "W" }
+        ]
+      }
     ]
   };
 

@@ -182,10 +182,24 @@ describe("Test with own data", () => {
 
       jRoverTest.results[index].roverEndStates.forEach(
         (expectedEndState, esIndex) => {
-          const { x, y, orientation } = roverEndStates[esIndex];
+          const {
+            x,
+            y,
+            orientation,
+            maxX,
+            minX,
+            maxY,
+            minY,
+            path
+          } = roverEndStates[esIndex];
           x.should.equal(expectedEndState.x);
           y.should.equal(expectedEndState.y);
           orientation.should.equal(expectedEndState.orientation);
+          path[path.length - 1].x.should.equal(expectedEndState.x);
+          path[path.length - 1].y.should.equal(expectedEndState.y);
+          path[path.length - 1].orientation.should.equal(
+            expectedEndState.orientation
+          );
         }
       );
     });

@@ -101,6 +101,12 @@
         let xEnd = x;
         let yEnd = y;
 
+        let maxX = x;
+        let minX = x;
+        let maxY = y;
+        let minY = y;
+        let path = [];
+
         let accRotation = jRover.identity;
         let inceptionRotationAccumulator = 0;
         let MStep = jRover.north1;
@@ -112,6 +118,10 @@
               const [[dx], [dy]] = MStep;
               xEnd += dx;
               yEnd += dy;
+              maxX = xEnd > maxX ? xEnd : maxX;
+              minX = xEnd < minX ? xEnd : minX;
+              maxY = yEnd > maxY ? yEnd : maxY;
+              minY = yEnd > minY ? yEnd : minY;
               accRotation = jRover.identity;
               break;
             case "L":
@@ -122,12 +132,22 @@
               break;
           }
           inceptionRotationAccumulator += jRover.evaluateRotation(instruction);
+          path.push({
+            x: xEnd,
+            y: yEnd,
+            orientation: jRover.evalOrientation(inceptionRotationAccumulator)
+          });
         });
 
         return {
           x: xEnd,
           y: yEnd,
-          orientation: jRover.evalOrientation(inceptionRotationAccumulator)
+          orientation: jRover.evalOrientation(inceptionRotationAccumulator),
+          maxX,
+          minX,
+          maxY,
+          minY,
+          path
         };
       });
     },
